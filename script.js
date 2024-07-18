@@ -1,88 +1,83 @@
-const url ="http://localhost:3000/toys"
- document.addEventListener('DOMContentloaded',() => {
-    fetchToys();
-    fetchToyDetails();//gets film detsils from localhost
- })
- function fetchToys(){
-    fetch(url)
-    .then(responce => response.json)
-    .then(toys => {
-        const toyList = document.getElementById('toys');
-        toyList.innerHTML = '';// clears html list
-        
-//enabless looping in arrays
-toys.forEach( toy => {
-    const li = document.getElementById('toys');
-    li.className ='toy item';
-    li.innerText = toy.name ;
-    li.addEventListener('click',() => fetchToyDetails (toy.id));//once item is clicked its info is displayed
-    toyList.appendChild(li)
 
-      if (available-toys === 0){
-        li.classList.add('sold-out');
 
-      }
+const url = 'http://localhost:3000/toys';
 
+document.addEventListener('DOMContentLoaded', function() {
+    const toysList = document.getElementById('toys');
+    const main = document.getElementById('main');
+    let currentToy = null;
+
+// Function to display toy details
+function displayToyDetails(toy) {
+    currentToy = toy;
+    document.getElementById('toyname').textContent = `Toy name: ${toy.toyname}`;
+    document.getElementById('toy_picture').src = toy.toy_picture;
+    document.getElementById('available_toys').textContent = `Available toys: ${toy.available_toys} pcs`;
+    document.getElementById('description').textContent = `Description: ${toy.description}`;
+    document.getElementById('price').textContent = `Toy price: ${toy.price}`;
+}
+
+// Function to update available toys in backend (db.json)
+function updateAvailableToysInBackend(toyId, newCount) {
+    fetch(`${url}/${toyId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ available_toys: newCount }),
+    })
+    .then(response => response.json())
+    .then(data => console.log('Toy updated successfully:', data))
+    .catch(error => console.error('Error updating toy:', error));
+}
+
+// Function to populate toys list
+function populateToys(toys) {
+    toys.forEach(toy => {
+        const li = document.createElement('li');
+        li.textContent = toy.toyname;
+        li.addEventListener('click', function() {
+            displayToyDetails(toy);
+        });
+        toysList.appendChild(li);
+    });
+}
+
+// Fetch toys data from JSON server
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        populateToys(data);
+        // Initially display details for the first toy
+        if (data.length > 0) {
+            displayToyDetails(data[0]);
+        }
+    })
+    .catch(error => console.error('Error fetching toys data:', error));
+
+// Add event listener to purchase button
+document.getElementById('purchase_toy').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent page reload
+    if (currentToy) {
+        // Update available toys locally and in backend
+        if (currentToy.available_toys > 0) {
+            currentToy.available_toys--;
+            updateAvailableToysInBackend(currentToy.id, currentToy.available_toys);
+            document.getElementById('available_toys').textContent = `Available toys: ${currentToy.available_toys} pcs`;
+            alert(`You have purchased ${currentToy.toyname}`);
+        } else {
+            alert(`Sorry, ${currentToy.toyname} is out of stock!`);
+        }
+    }
 });
-    })
-    .catch(error => console.error('Error fetching films:',error));
- }
- function fetchToyDetails(id){
-    fetch(`${url}/${id}`)
-    .then(response => response.json())
-    .then(toy =>{
-        displayToyDetails(toys);
 
-    })
-    .catch(error => console.error('Error fetching films',error));
- }
- function fetchToyDetails(id){
-    fetch(`${url}/${id}`)
-    .then(response => response.json())
-    .then(toys => {
-        displayToyDetails(film);
-    })
-    .catch(error => console.error('Error fetching film data',error));
-
- }
-  function displayToyDetails(toys){
-    const { toyname, available_toys, description, price, toy_picture } = toys;
-
-    document.getElementById('toy_picture').scr = toy_picture;
-    document.getElementById('toyname').innerText = toyname ;
-    document.getElementById( 'description').innerText =`Description: ${toy.description}`;
-    document.getElementById('price' ).innerText =`price: ${price}`;
-    document.getElementById('available_toys').innerText =`available: ${available_toys}`;
-
- const purchaseToyButton = document.getElementById(`purchase_toy`);
-       purchaseToyButton.disabled = availableToys === 0 ;
-       purchaseToyButton.innerText = availableToys === 0 ? 'sold out' : 'Buy Toy';
-
-       
-
-       purchaseToyButtonButton.onclick  = () => purchaseToyButton(toy);
-
-   } 
-   function purchase_toy(toy){
-    const availableToys = toy.available_toys
-
-if(availableToys >0 ) {
-const updtedAvailableToys = toy.availableToys  -1;
-fetch(`${url}/${toy.id}`,{
-    method:'PATCH',
-    headers: {
-        'Content-Type':'application/json',
-
-    },
-    body:JSON.stringify({available_toys :updatedToysSold}),
- })
- .then(response => response.json())
- .then( updatedToy => {
-    displayToyDetails(updatedToy)
-    toys();//refreshes toy list
- })
- .catch(error => console.error('Error updating film data:', error));
-
-}
-
-}
+// Prevent default behavior of other buttons or forms if needed
+document.querySelectorAll('button, form').forEach(element => {
+    element.addEventListener('submit', function(event) {
+        event.preventDefault();
+    });
+    element.addEventListener('click', function(event) {
+        event.preventDefault();
+    });
+});
+});
