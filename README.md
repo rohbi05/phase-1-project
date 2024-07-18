@@ -52,7 +52,7 @@ on a toy it displays on the right displaying the toy  you have clicked , its det
 - `submit ` to submits the purchase toy request when purchase toy is clicked 
 ## contributing 
 feel free to submit a pull request for any changes or improvements
- ##Author
+ ## Author
  [Shantal Rohbi](https://github.com/dashboard)
  ## deployed link 
  [link](https://phase-1-project-blush.vercel.app/)
