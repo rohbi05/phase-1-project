@@ -53,7 +53,9 @@ on a toy it displays on the right displaying the toy  you have clicked , its det
 ## contributing 
 feel free to submit a pull request for any changes or improvements
  ##Author
- [Shantal Rohbi](https://github.com/)
+ [Shantal Rohbi](https://github.com/dashboard)
+ ## deployed link 
+ [link](https://phase-1-project-blush.vercel.app/)
 
 
 
