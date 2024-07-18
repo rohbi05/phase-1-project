@@ -1,6 +1,6 @@
 
 
-const url = 'http://localhost:3000/toys';
+const url = 'https://project-back-end-six.vercel.app/toys';
 
 document.addEventListener('DOMContentLoaded', function() {
     const toysList = document.getElementById('toys');

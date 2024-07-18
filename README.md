@@ -9,7 +9,7 @@
 - The app is designed to purchase various  toys arccording to ones preference
 - once you get onto  the app you are present with a list of toys once you click
 on a toy it displays on the right displaying the toy  you have clicked , its details and how many are in stock.
-- once you click on purchase  you get an  alert notifying you its bought and once you click okay  the number of available toys reduces indicating a successfull purchase and automatically reloads and takes you back to the firdt toy in the list
+- once you click on purchase  you get an  alert notifying you its bought and once you click okay  the number of available toys reduces indicating  purchase was successful
 - if sold out you get an alert notifying you that the o you are trying to putchase is sold out 
 
 ## Technologies  required
