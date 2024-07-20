@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Sedan+SC&display=swap');
 body{
-
+    font-family: "Sedan SC", serif;;
+    background-image: url(https://media.istockphoto.com/id/866298824/photo/kids-toys-background-with-teddy-bear-and-colorful-blocks.webp?b=1&s=170667a&w=0&k=20&c=f4oNYlIwVn_snE0po4_bhb766YSfrlMulP2ibEgaIE4=);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .container {
      display:flex;
@@ -7,6 +11,7 @@ body{
     align-items: flex-start;
     padding:14px;
     height:100%;
+
     
 
 
@@ -24,10 +29,11 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #ccc;
+    border: 1px solid ;
     text-align: center;
     height: 80px;
     width: 10px;
+    background-color:;
 }
 
 #toyname, #available_toys, #description, #price {
@@ -60,6 +66,7 @@ button:hover {
 #toys{
     padding:0px;
     list-style-type:none;
+    
 }
 
 #toys li {
@@ -68,10 +75,11 @@ button:hover {
     margin-bottom: 10px;
     border-radius: 2px;
     cursor: pointer;
-    transition : background-color 0.3s, border-color o.3s;
+    transition : background-color 0.3, border-color o.3s;
     width: 110px;
+    background-color: lightgray;
 }
 #toys li:hover {
-    background-color:rgb(228, 214, 214);
-    border-color: gray;
+    background-color :grey;
+    border-color: grey;
 }
