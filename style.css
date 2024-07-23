@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Sedan+SC&display=swap');
 body{
     font-family: "Sedan SC", serif;;
-    background-image: url(https://media.istockphoto.com/id/866298824/photo/kids-toys-background-with-teddy-bear-and-colorful-blocks.webp?b=1&s=170667a&w=0&k=20&c=f4oNYlIwVn_snE0po4_bhb766YSfrlMulP2ibEgaIE4=);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color:  white;
 }
 .container {
      display:flex;
